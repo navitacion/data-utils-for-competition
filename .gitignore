@@ -1,0 +1,7 @@
+.idea/*
+input/*
+hydra_output/*
+src/*/__pycache__/*
+*/__pycache__/*
+multirun/*
+catboost_info/*
