@@ -35,7 +35,7 @@ class TextVectorizer(BaseFeatureTransformer):
         self.transformer = get_transformer(name=transformer, n_components=n_components, seed=seed)
         self.target_col = target_col
         self.n_components = n_components
-        self.name = f"fe_textvec_{vectorizer}-{transformer}_{ngram_range}_{self.target_col}"
+        self.name = f"fe_textvec_{vectorizer}-{transformer}_{ngram_range[0]}{ngram_range[1]}_{self.target_col}"
 
     def transform(self, df):
         corpus = df[self.target_col].fillna('NaN').tolist()

@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 
-def load_data(data_dir, down_sample=1.0, seed=0, id_col=None, target_col='target'):
+def load_data(data_dir, sampling=1.0, seed=0, id_col=None, target_col='target'):
     """
     Load Raw Data
     Assumpt 2 Dataset 'train.csv' and 'test.csv'
@@ -11,7 +11,7 @@ def load_data(data_dir, down_sample=1.0, seed=0, id_col=None, target_col='target
     Parameter
     data_dir: str
         directory of dataset
-    down_sample: float
+    sampling: float
         sampling train data
         for Debug
     seed: int
@@ -38,8 +38,8 @@ def load_data(data_dir, down_sample=1.0, seed=0, id_col=None, target_col='target
     train['is_train'] = 1
     test['is_train'] = 0
 
-    if down_sample < 1:
-        train = train.sample(frac=down_sample, random_state=seed).reset_index(drop=True)
+    if sampling < 1:
+        train = train.sample(frac=sampling, random_state=seed).reset_index(drop=True)
 
     df = pd.concat([train, test], axis=0, ignore_index=True)
 
