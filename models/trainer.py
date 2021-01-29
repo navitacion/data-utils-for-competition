@@ -54,11 +54,6 @@ class Trainer:
             self.X_test = test[self.features].values
             self.test_id = test[self.id_col].values
 
-        # init Model list
-        self.models = []
-        self.oof_pred = np.zeros(len(self.y_train))
-        self.oof_y = np.zeros(len(self.y_train))
-
 
     def _transform_value(self, v, mode='forward'):
         """
@@ -94,6 +89,11 @@ class Trainer:
         """
         Train loop for Cross Validation
         """
+        # init Model list
+        self.models = []
+        self.oof_pred = np.zeros(len(self.y_train))
+        self.oof_y = np.zeros(len(self.y_train))
+
         # GroupKFold
         # ref: https://www.guruguru.science/competitions/13/discussions/cc7167cb-3627-448a-b9eb-7afcd29fd122/
         unique_year = self.group.unique()
@@ -125,6 +125,11 @@ class Trainer:
         """
         Train loop for Cross Validation
         """
+        # init Model list
+        self.models = []
+        self.oof_pred = np.zeros(len(self.y_train))
+        self.oof_y = np.zeros(len(self.y_train))
+
         for i, (trn_idx, val_idx) in enumerate(self.cv.split(self.X_train, self.y_train)):
             X_trn, y_trn = self.X_train[trn_idx], self.y_train[trn_idx]
             X_val, y_val = self.X_train[val_idx], self.y_train[val_idx]
